@@ -28,11 +28,24 @@ public class UserService {
 		return authUser;
 	}
 	
-	
-	//	로그아웃------------------------------------------------------------------------
-	
-	
 	//	회원정보 수정---------------------------------------------------------------------
+	
+	public UserVo getUser(int no) {
+		System.out.println("userService:getUser");
+		
+		return userDao.getUser(no);
+	}
+	
+	public int updateUser(UserVo userVo) {
+		System.out.println("userService:updateUser");
+
+		return userDao.updateUser(userVo);
+	}
+	
+	
+	
+	
+	
 	
 	//	방명록 작성----------------------------------------------------------------------
 	

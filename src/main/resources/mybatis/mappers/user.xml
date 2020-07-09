@@ -27,13 +27,30 @@
 			and     	password = #{password}    
 		]]>
 	</select>
-
-
-
-
-
-
-
+	
+	<!-- 사용자 정보 가져오기 -->
+	<select id = "getUser" parameterType = "int" resultType = "com.javaex.vo.UserVo">
+		<![CDATA[
+			select  	no,
+						id,
+			        	name,
+			        	password,
+			        	gender
+			from    	users
+			where   	no = #{no}  
+		]]>
+	</select>
+	
+	<!-- 회원정보 수정 -->
+	<update id = "updateUser" parameterType = "com.javaex.vo.UserVo">
+		<![CDATA[
+			update		users
+			set			name		= #{name},
+						password	= #{password},
+						gender		= #{gender}
+			where		no			= #{no}
+		]]>
+	</update>
 
 
 

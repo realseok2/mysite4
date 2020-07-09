@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -71,15 +72,44 @@ public class UserController {
 	
 	//	로그아웃-----------------------------------------------------------------
 	
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		System.out.println("userController:logout");
+				
+		session.removeAttribute("authUser");
+		session.invalidate();
+		
+		return "redirect:/main";
+	}
+	
+	//	회원정보수정---------------------------------------------------------------	
+	
+	@RequestMapping("/modifyForm")
+	public String modifyForm(Model model, HttpSession session) {
+		System.out.println("userController:modifyForm");
+		
+		UserVo userVo = (UserVo)session.getAttribute("authUser");
+		UserVo authUser = userService.getUser(userVo.getNo());
+		
+		model.addAttribute("authUser", authUser);
+		return "/user/modifyForm";
+	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
+	@RequestMapping("/modify")
+	public String modify(@ModelAttribute UserVo userVo, HttpSession session) {
+		System.out.println("userController:modify");
+		
+		userService.updateUser(userVo);
+		
+		UserVo authUser = userService.login(userVo);
+		
+		session.removeAttribute("authUser");
+		session.setAttribute("authUser", authUser);
+		
+		
+		return "redirect:/main";
+	}
 	
 	
 	
