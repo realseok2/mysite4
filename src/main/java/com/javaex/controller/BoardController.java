@@ -104,7 +104,7 @@ public class BoardController {
 		
 		List<BoardVo> bList = boardService.search(keyword);
 		model.addAttribute("bList", bList);
-		System.out.println(bList.toString());
+		System.out.println("컨트롤러 : " + bList.toString());
 		return "board/list";
 	}
 	
