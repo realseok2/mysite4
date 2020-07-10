@@ -30,6 +30,7 @@ public class BoardService {
 		System.out.println("boardService:read");
 
 		boardDao.count(no);
+		
 		return boardDao.getPost(no);
 	}
 
@@ -46,17 +47,28 @@ public class BoardService {
 
 	public int delete(int no) {
 		System.out.println("boardService:delete");
+		
 		return boardDao.delete(no);
 	}
 	
 	// 게시물 수정-----------------------------------------------------------------
 
+	public int update(BoardVo boardVo) {
+		System.out.println("boardService:update");
+		
+		return boardDao.update(boardVo);
+	}
 
+	// 게시물 검색-----------------------------------------------------------------	
 	
+	public List<BoardVo> search(String keyword) {
+		System.out.println("boardService:search");
+		List<BoardVo> bList = boardDao.select(keyword);
+		
+		return bList;
+	}
 	
-	
-	
-	
+	// 게시물 페이징----------------------------------------------------------------	
 	
 	
 	

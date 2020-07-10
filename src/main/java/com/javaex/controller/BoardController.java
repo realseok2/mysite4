@@ -29,6 +29,7 @@ public class BoardController {
 
 		List<BoardVo> bList = boardService.getList();
 		model.addAttribute("bList", bList);
+		System.out.println(bList.toString());
 
 		return "board/list";
 	}
@@ -48,7 +49,7 @@ public class BoardController {
 	// 게시물 추가-----------------------------------------------------------------
 
 	@RequestMapping("/writeForm/{userNo}")
-	public String writeForm(Model model, @PathVariable("user_no") int userNo) {
+	public String writeForm(Model model, @PathVariable("userNo") int userNo) {
 		System.out.println("boardController:writeForm");
 
 		model.addAttribute("userNo", userNo);
@@ -66,6 +67,63 @@ public class BoardController {
 
 	// 게시물 삭제-----------------------------------------------------------------
 
+	@RequestMapping("/delete/{no}")
+	public String delete(@PathVariable("no") int no) {
+		System.out.println("boardController:delete");
+		
+		boardService.delete(no);
+		return "redirect:/board/list";
+	}
+	
 	// 게시물 수정-----------------------------------------------------------------
 
+	@RequestMapping("/modifyForm/{no}")
+	public String modifyForm(Model model, @PathVariable("no") int no) {
+		System.out.println("boaedController:modifyForm");
+		
+		BoardVo boardVo = boardService.read(no);
+		model.addAttribute("boardVo", boardVo);
+		System.out.println("수정폼 : " + boardVo.toString());
+		return "board/modifyForm";
+	}
+	
+	@RequestMapping("/modify")
+	public String modify(@ModelAttribute BoardVo boardVo) {
+		System.out.println("boardController:modify");
+		
+		boardService.update(boardVo);
+		System.out.println("수정 : " + boardVo.toString());
+		return "redirect:/board/list";
+	}
+	
+	// 게시물 검색-----------------------------------------------------------------
+	
+	@RequestMapping("/search")
+	public String search(Model model, @PathVariable("keyword") String keyword) {
+		System.out.println("boardController:search");
+		
+		List<BoardVo> bList = boardService.search(keyword);
+		model.addAttribute("bList", bList);
+		System.out.println(bList.toString());
+		return "board/list";
+	}
+	
+	// 게시물 페이징----------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

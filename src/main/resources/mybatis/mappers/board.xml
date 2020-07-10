@@ -4,7 +4,7 @@
 <mapper namespace="board">
 
 	<!-- 게시물 리스트 -->
-	<select id="getList" resultType="com.javaex.vo.BoardVo">
+	<select id="getList" parameterType="String" resultType="com.javaex.vo.BoardVo">
 		<![CDATA[
 			SELECT      b.no,
 			            b.title,
@@ -20,20 +20,29 @@
 	</select>
 
 	<!-- 게시물 읽기 -->
-	<select id="getPost" parameterType="int" >
+	<select id="getPost" parameterType="int" resultType="com.javaex.vo.BoardVo">
     	<![CDATA[
 	    	select  b.no,
 			        b.title,
 			        b.content,
-			        u.name,
+			        u.name userName,
 			        b.hit,
 			        to_char(b.reg_date,'yyyy-mm-dd hh24:mi') "date",
-			        b.user_no
+			        b.user_no userNo
 			from	board b, users u
 			where	b.user_no = u.no
 			and		b.no = #{no}
 		]]>
 	</select>
+	
+	<!-- 카운트 -->
+	<update id="count" parameterType="int">
+		<![CDATA[
+			update     		board
+			set         	hit     =	hit + 1
+			where       	no      =	#{no}
+		]]>
+	</update>
 
 	<!-- 게시물 추가 -->
 	<insert id="insert" parameterType="com.javaex.vo.BoardVo">
@@ -55,7 +64,7 @@
 			where           no      = #{no}
 		]]>
 	</delete>
-	
+
 	<!-- 게시물 수정 -->
 	<update id="update" parameterType="com.javaex.vo.BoardVo">
 		<![CDATA[
@@ -63,27 +72,27 @@
 			set             title       = #{title},
 			                content     = #{content}
 			where           no          = #{no}
-			and             user_no     = #{userNo}
 		]]>
 	</update>
+
+	<!-- 게시물 검색 -->
+	<select id="keyword" parameterType="String" resultType="com.javaex.vo.BoardVo">
+    	<![CDATA[
+    		SELECT      b.no,
+			            b.title,
+			            b.content,
+			            b.hit,
+			            to_char(b.reg_date, 'yyyy-mm-dd hh24:mi') "date",
+			            b.user_no userNo,
+			            u.name userName
+			FROM        board b, users u
+			where       b.user_no = u.no
+			and			b.title like %||#{keyword}||%
+			order by    b.no desc
+		]]>
+	</select>
 	
-	<!-- 카운트 -->
-	<update id="count" parameterType="int">
-		<![CDATA[
-			update     		board
-			set         	hit     =	hit + 1
-			where       	no      =	#{no}
-		]]>
-	</update>
-
-
-
-
-
-
-
-
-
+	<!-- 게시물 페이징 -->
 
 
 

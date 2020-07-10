@@ -44,7 +44,6 @@
 			<div id="board">
 				<div id="modifyForm">
 					<form action="${pageContext.request.contextPath }/board/modify" method="get">
-					<input type = "hidden" name = "action" value = "modify">
 					<input type = "hidden" name = "no" value = ${boardVo.no }>
 						<!-- 작성자 -->
 						<div class="form-group">

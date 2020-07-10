@@ -32,6 +32,12 @@ public class BoardDao {
 		System.out.println("boardDao:getPost");
 		return sqlSession.selectOne("board.getPost", no);
 	}
+	
+	public int count(int no) {
+		System.out.println("boardDao:count");
+		
+		return sqlSession.update("board.count", no);
+	}
 
 	// 게시물 추가-----------------------------------------------------------------
 
@@ -52,22 +58,20 @@ public class BoardDao {
 	
 	// 게시물 수정-----------------------------------------------------------------
 
-	public int count(int no) {
-		System.out.println("boardDao:count");
-		
-		return sqlSession.update("board.count", no);
-	}
-	
 	public int update(BoardVo boardVo) {
 		System.out.println("boardDao:update");
-		
 		return sqlSession.update("board.update", boardVo);
 	}
 	
+	// 게시물 검색-----------------------------------------------------------------	
 	
+	public List<BoardVo> select(String keyword) {
+		System.out.println("boardDao:select");
+		List<BoardVo> bList = sqlSession.selectList("board.keyword", keyword);
+		return bList;
+	}
 	
-	
-	
+	// 게시물 페이징----------------------------------------------------------------	
 	
 	
 	
