@@ -10,6 +10,7 @@ import com.javaex.vo.UserVo;
 public class UserDao {
 
 //	기본설정------------------------------------------------------------------------ 
+	
 	@Autowired
 	private SqlSession sqlSession;
 	
@@ -26,18 +27,19 @@ public class UserDao {
 	public UserVo selectUser(UserVo userVo) {
 		System.out.println("UserDao:selectUser");
 		System.out.println(userVo.toString());
-		UserVo authUser = sqlSession.selectOne("user.selectUser", userVo);
-
-		return authUser;
+		
+		return sqlSession.selectOne("user.selectUser", userVo);
 	}
 	
-//	회원정보 수정----------------------------------------------------------------------
+//	로그인한 사용자 정보-----------------------------------------------------------------
 	
 	public UserVo getUser(int no) {
 		System.out.println("UserDao:getUser");
 		
 		return sqlSession.selectOne("user.getUser", no);
 	}
+
+//	회원정보 수정----------------------------------------------------------------------
 	
 	public int updateUser(UserVo userVo) {
 		System.out.println("UserDao:updateUser");

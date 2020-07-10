@@ -17,7 +17,7 @@
 				<c:otherwise>
 					<!-- 로그인 성공시 -->
 					<ul>
-						<li>WELCOME ${authUser.name}</li>
+						<li>WELCOME ${sessionScope.authUser.name}</li>
 						<li><a href="${pageContext.request.contextPath }/user/logout">Leave</a></li>
 						<li><a href="${pageContext.request.contextPath }/user/modifyForm">Modification</a></li>
 					</ul>

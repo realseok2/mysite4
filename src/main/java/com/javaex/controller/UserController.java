@@ -88,8 +88,9 @@ public class UserController {
 	public String modifyForm(Model model, HttpSession session) {
 		System.out.println("userController:modifyForm");
 		
-		UserVo userVo = (UserVo)session.getAttribute("authUser");
-		UserVo authUser = userService.getUser(userVo.getNo());
+		int no = ((UserVo)session.getAttribute("authUser")).getNo();
+		
+		UserVo authUser = userService.getUser(no);
 		
 		model.addAttribute("authUser", authUser);
 		return "/user/modifyForm";
@@ -101,7 +102,6 @@ public class UserController {
 		System.out.println("userController:modify");
 		
 		userService.updateUser(userVo);
-		
 		UserVo authUser = userService.login(userVo);
 		
 		session.removeAttribute("authUser");

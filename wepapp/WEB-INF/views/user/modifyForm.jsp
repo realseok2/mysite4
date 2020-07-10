@@ -50,6 +50,7 @@
 						<div class="form-group">
 							<label class="form-text" for="input-uid">아이디</label> 
 							<span class="text-large bold">${authUser.id }</span>
+							<input type = "hidden" id="input-id" name="id" value=${authUser.id }>
 						</div>
 
 						<!-- 비밀번호 -->
@@ -64,15 +65,27 @@
 							<input type="text" id="input-name" name="name" value="${authUser.name }" placeholder="이름을 입력하세요">
 						</div>
 
-						<!-- //나이 -->
+						<!-- 성별 -->
 						<div class="form-group">
-							<span class="form-text">성별</span> 
+							<span class="form-text">SEX</span> 
 							
-							<label for="rdo-male">남</label> 
-							<input type="radio" id="rdo-male" name="gender" value="male" > 
-							
-							<label for="rdo-female">여</label> 
-							<input type="radio" id="rdo-female" name="gender" value="female" > 
+							<c:choose>
+								<c:when test="${authUser.gender == male }">
+									<label for="rdo-male">MALE</label> 
+									<input type="radio" id="rdo-male" name="gender" value="male" checked = "checked" > 
+									
+									<label for="rdo-female">FEMALE</label> 
+									<input type="radio" id="rdo-female" name="gender" value="female" > 
+								</c:when>
+								
+								<c:otherwise>
+									<label for="rdo-male">MALE</label> 
+									<input type="radio" id="rdo-male" name="gender" value="male" > 
+								
+									<label for="rdo-female">FEMALE</label> 
+									<input type="radio" id="rdo-female" name="gender" value="female" checked = "checked" >
+								</c:otherwise>
+							</c:choose>
 
 						</div>
 

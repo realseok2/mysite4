@@ -16,16 +16,14 @@ public class UserService {
 	public int join(UserVo userVo) {
 		System.out.println("userService:join");
 	
-		userDao.insert(userVo);
-		return 1;
+		return userDao.insert(userVo);
 	}
 	
 	//	로그인-------------------------------------------------------------------------
 	public UserVo login(UserVo userVo) {
 		System.out.println("userService:login");
 		
-		UserVo authUser = userDao.selectUser(userVo);
-		return authUser;
+		return userDao.selectUser(userVo);
 	}
 	
 	//	회원정보 수정---------------------------------------------------------------------
