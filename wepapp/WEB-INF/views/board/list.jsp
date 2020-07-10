@@ -75,7 +75,7 @@
 									
 									<td>
 										<c:if test="${authUser.no == boardVo.userNo }">
-									<a href="${pageContext.request.contextPath }/board/modifyForm/${boardVo.no}">[Modification]</a>
+											<a href="${pageContext.request.contextPath }/board/modifyForm/${boardVo.no}">[Modification]</a>
 										</c:if>	
 									</td>
 									

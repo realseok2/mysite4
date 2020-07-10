@@ -11,8 +11,8 @@
 			            b.content,
 			            b.hit,
 			            to_char(b.reg_date, 'yyyy-mm-dd hh24:mi') "date",
-			            b.user_no,
-			            u.name
+			            b.user_no userNo,
+			            u.name userName
 			FROM        board b, users u
 			where       b.user_no = u.no
 			order by    b.no desc
@@ -20,7 +20,7 @@
 	</select>
 
 	<!-- 게시물 읽기 -->
-	<select id="getPost" parameterType="int" resultType="com.javaex.vo.BoardVo">
+	<select id="getPost" parameterType="int" >
     	<![CDATA[
 	    	select  b.no,
 			        b.title,
@@ -36,7 +36,7 @@
 	</select>
 
 	<!-- 게시물 추가 -->
-	<insert id="insert" parameterType="com.javaex.vo.boardVo">
+	<insert id="insert" parameterType="com.javaex.vo.BoardVo">
 		<![CDATA[
 			insert into		board
 			values			(seq_board_no.nextval,
@@ -44,11 +44,37 @@
 							#{content},
 							0,
 							sysdate,
-							#{userNo })
+							#{userNo})
 		]]>
 	</insert>
 
-
+	<!-- 게시물 삭제 -->
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete from     board
+			where           no      = #{no}
+		]]>
+	</delete>
+	
+	<!-- 게시물 수정 -->
+	<update id="update" parameterType="com.javaex.vo.BoardVo">
+		<![CDATA[
+			update          board
+			set             title       = #{title},
+			                content     = #{content}
+			where           no          = #{no}
+			and             user_no     = #{userNo}
+		]]>
+	</update>
+	
+	<!-- 카운트 -->
+	<update id="count" parameterType="int">
+		<![CDATA[
+			update     		board
+			set         	hit     =	hit + 1
+			where       	no      =	#{no}
+		]]>
+	</update>
 
 
 

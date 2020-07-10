@@ -44,6 +44,34 @@ public class BoardDao {
 
 	// 게시물 삭제-----------------------------------------------------------------
 
+	public int delete(int no) {
+		System.out.println("boardDao:delete");
+		
+		return sqlSession.delete("board.delete", no);
+	}
+	
 	// 게시물 수정-----------------------------------------------------------------
 
+	public int count(int no) {
+		System.out.println("boardDao:count");
+		
+		return sqlSession.update("board.count", no);
+	}
+	
+	public int update(BoardVo boardVo) {
+		System.out.println("boardDao:update");
+		
+		return sqlSession.update("board.update", boardVo);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
