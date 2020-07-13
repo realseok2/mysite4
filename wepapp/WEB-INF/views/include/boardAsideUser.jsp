@@ -4,7 +4,7 @@
 		<div id="aside">
 			<h2>Board</h2>
 			<ul>
-				<li><a href="">Normal</a></li>
-				<li><a href="">Riply</a></li>
+				<li><a href="${pageContext.request.contextPath }/board/list">Normal</a></li>
+				<li><a href="${pageContext.request.contextPath }/reply/list">Riply</a></li>
 			</ul>
 		</div>

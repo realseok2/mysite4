@@ -43,8 +43,8 @@
 
 			<div id="board">
 				<div id="modifyForm">
-					<form action="${pageContext.request.contextPath }/board/modify" method="get">
-					<input type = "hidden" name = "no" value = ${boardVo.no }>
+					<form action="${pageContext.request.contextPath }/reply/modify" method="get">
+					<input type = "hidden" name = "no" value = ${replyVo.no }>
 						<!-- 작성자 -->
 						<div class="form-group">
 							<span class="form-text">Writer</span>
@@ -54,29 +54,29 @@
 						<!-- 조회수 -->
 						<div class="form-group">
 							<span class="form-text">Views</span>
-							<span class="form-value">${boardVo.hit }</span>
+							<span class="form-value">${replyVo.hit }</span>
 						</div>
 						
 						<!-- 작성일 -->
 						<div class="form-group">
 							<span class="form-text">WritedDate</span>
-							<span class="form-value">${boardVo.date }</span>
+							<span class="form-value">${replyVo.date }</span>
 						</div>
 						
 						<!-- 제목 -->
 						<div class="form-group">
 							<label class="form-text" for="txt-title">Title</label>
-							<input type="text" id="txt-title" name="title" value="${boardVo.title }">
+							<input type="text" id="txt-title" name="title" value="${replyVo.title }">
 						</div>
 					
 						
 					
 						<!-- 내용 -->
 						<div class="form-group">
-							<textarea id="txt-content" name = "content" value = "${boardVo.content }">${boardVo.content}</textarea>
+							<textarea id="txt-content" name = "content" value = "${replyVo.content }">${replyVo.content}</textarea>
 						</div>
 						
-						<a id="btn_cancel" href="${pageContext.request.contextPath }/board/list">Cancel</a>
+						<a id="btn_cancel" href="${pageContext.request.contextPath }/reply/list">Cancel</a>
 						<button id="btn_modify" type="submit" >Modification</button>
 						
 					</form>

@@ -2,11 +2,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>modifyForm</title>
+<title>read</title>
 <link href="${pageContext.request.contextPath }/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/board.css" rel="stylesheet" type="text/css">
 
@@ -22,9 +23,8 @@
 		<c:import url="/WEB-INF/views/include/nav.jsp"></c:import>	
 		<!-- //nav -->
 
-				<c:import url="/WEB-INF/views/include/boardAsideUser.jsp"></c:import>
+		<c:import url="/WEB-INF/views/include/boardAsideUser.jsp"></c:import>
 		<!-- //aside -->
-
 
 		<div id="content">
 
@@ -42,47 +42,53 @@
 			<!-- //content-head -->
 
 			<div id="board">
-				<div id="modifyForm">
-					<form action="${pageContext.request.contextPath }/board/modify" method="get">
-					<input type = "hidden" name = "no" value = ${boardVo.no }>
+				<div id="read">
+					<form action="#" method="get">
 						<!-- 작성자 -->
 						<div class="form-group">
 							<span class="form-text">Writer</span>
-							<span class="form-value">${authUser.name }</span>
+							<span class="form-value">${replyVo.userName }</span>
 						</div>
 						
 						<!-- 조회수 -->
 						<div class="form-group">
 							<span class="form-text">Views</span>
-							<span class="form-value">${boardVo.hit }</span>
+							<span class="form-value">${replyVo.hit }</span>
 						</div>
 						
 						<!-- 작성일 -->
 						<div class="form-group">
 							<span class="form-text">WritedDate</span>
-							<span class="form-value">${boardVo.date }</span>
+							<span class="form-value">${replyVo.date }</span>
 						</div>
 						
 						<!-- 제목 -->
 						<div class="form-group">
-							<label class="form-text" for="txt-title">Title</label>
-							<input type="text" id="txt-title" name="title" value="${boardVo.title }">
+							<span class="form-text">Title</span>
+							<span class="form-value">${replyVo.title }</span>
 						</div>
-					
-						
 					
 						<!-- 내용 -->
-						<div class="form-group">
-							<textarea id="txt-content" name = "content" value = "${boardVo.content }">${boardVo.content}</textarea>
+						<div id="txt-content">
+							<span class="form-value" >
+								${replyVo.content }
+							</span>
 						</div>
 						
-						<a id="btn_cancel" href="${pageContext.request.contextPath }/board/list">Cancel</a>
-						<button id="btn_modify" type="submit" >Modification</button>
+						<c:if test="${authUser.no == replyVo.userNo }">
+							<a id="btn_modify" href="${pageContext.request.contextPath }/reply/delete/${replyVo.no}">Delete </a>
+						</c:if>	
+						
+						<c:if test="${authUser.no == replyVo.userNo }">
+							<a id="btn_modify" href="${pageContext.request.contextPath }/reply/modifyForm/${replyVo.no }">Modification</a>
+						</c:if>
+						
+						<a id="btn_modify" href="${pageContext.request.contextPath }/reply/list">List</a>
 						
 					</form>
 	                <!-- //form -->
 				</div>
-				<!-- //modifyForm -->
+				<!-- //read -->
 			</div>
 			<!-- //board -->
 		</div>

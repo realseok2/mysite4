@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>modifyForm</title>
+<title>writeForm</title>
 <link href="${pageContext.request.contextPath }/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/board.css" rel="stylesheet" type="text/css">
 
@@ -22,7 +21,7 @@
 		<c:import url="/WEB-INF/views/include/nav.jsp"></c:import>	
 		<!-- //nav -->
 
-				<c:import url="/WEB-INF/views/include/boardAsideUser.jsp"></c:import>
+		<c:import url="/WEB-INF/views/include/boardAsideUser.jsp"></c:import>	
 		<!-- //aside -->
 
 
@@ -42,47 +41,29 @@
 			<!-- //content-head -->
 
 			<div id="board">
-				<div id="modifyForm">
-					<form action="${pageContext.request.contextPath }/board/modify" method="get">
-					<input type = "hidden" name = "no" value = ${boardVo.no }>
-						<!-- 작성자 -->
-						<div class="form-group">
-							<span class="form-text">Writer</span>
-							<span class="form-value">${authUser.name }</span>
-						</div>
-						
-						<!-- 조회수 -->
-						<div class="form-group">
-							<span class="form-text">Views</span>
-							<span class="form-value">${boardVo.hit }</span>
-						</div>
-						
-						<!-- 작성일 -->
-						<div class="form-group">
-							<span class="form-text">WritedDate</span>
-							<span class="form-value">${boardVo.date }</span>
-						</div>
-						
+				<div id="writeForm">
+					<form action="${pageContext.request.contextPath }/reply/write" method="get">
+					
+					<input type = "hidden" name = "userNo" value = "${userNo }">
+					
 						<!-- 제목 -->
 						<div class="form-group">
 							<label class="form-text" for="txt-title">Title</label>
-							<input type="text" id="txt-title" name="title" value="${boardVo.title }">
+							<input type="text" id="txt-title" name="title" value="" placeholder="제목을 입력해 주세요">
 						</div>
-					
-						
 					
 						<!-- 내용 -->
 						<div class="form-group">
-							<textarea id="txt-content" name = "content" value = "${boardVo.content }">${boardVo.content}</textarea>
+							<textarea id="txt-content" name="content" value="" placeholder="내용을 입력해 주세요"></textarea>
 						</div>
 						
-						<a id="btn_cancel" href="${pageContext.request.contextPath }/board/list">Cancel</a>
-						<button id="btn_modify" type="submit" >Modification</button>
+						<a id="btn_cancel" href="${pageContext.request.contextPath }/reply/list">Cancel</a>
+						<button id="btn_add" type="submit" >Submit</button>
 						
 					</form>
 	                <!-- //form -->
 				</div>
-				<!-- //modifyForm -->
+				<!-- //writeForm -->
 			</div>
 			<!-- //board -->
 		</div>
