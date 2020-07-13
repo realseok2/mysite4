@@ -9,6 +9,7 @@ import com.javaex.vo.UserVo;
 @Service
 public class UserService {
 
+	//	기본설정------------------------------------------------------------------------
 	@Autowired
 	private UserDao userDao;
 		

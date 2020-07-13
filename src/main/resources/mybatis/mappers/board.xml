@@ -86,8 +86,13 @@
 			            b.user_no userNo,
 			            u.name userName
 			FROM        board b, users u
+			
 			where       b.user_no = u.no
-			and			b.title like %||#{keyword}||%
+			and			b.title like '%'||#{keyword}||'%'
+			
+			or			b.user_no = u.no
+			and			u.name like '%'||#{keyword}||'%'
+			
 			order by    b.no desc
 		]]>
 	</select>

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.service.BoardService;
 import com.javaex.vo.BoardVo;
@@ -99,7 +100,7 @@ public class BoardController {
 	// 게시물 검색-----------------------------------------------------------------
 	
 	@RequestMapping("/search")
-	public String search(Model model, @PathVariable("keyword") String keyword) {
+	public String search(Model model, @RequestParam("keyword") String keyword) {
 		System.out.println("boardController:search");
 		
 		List<BoardVo> bList = boardService.search(keyword);

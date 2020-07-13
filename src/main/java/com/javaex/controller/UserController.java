@@ -110,20 +110,5 @@ public class UserController {
 		
 		return "redirect:/main";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

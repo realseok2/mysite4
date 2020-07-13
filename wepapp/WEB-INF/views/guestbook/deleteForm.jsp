@@ -33,7 +33,7 @@
 
 			<div id="guestbook">
 				<form action="${pageContext.request.contextPath }/guestbook/delete" method="get">
-					<input type = "hidden" name = "no" value = ${no }> }
+					<input type = "hidden" name = "no" value = ${no }>
 					<table id="guestDelete">
 						<colgroup>
 							<col style="width: 10%;">

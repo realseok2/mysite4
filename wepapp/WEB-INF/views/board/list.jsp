@@ -44,12 +44,20 @@
 
 			<div id="board">
 				<div id="list">
-					<form action="${pageContext.request.contextPath }/board/list" method="get">
+					<form action="${pageContext.request.contextPath }/board/search" method="get">
 					
 						<div class="form-group text-right">
-							<input type = "hidden" name = "action" value = "search">
+						
+						
+						
+						
 							<input type = "text" name = "keyword" value = "">
 							<button type="submit" id=btn_search>Search</button>
+						
+						
+						
+						
+							
 						</div>
 					</form>
 					<table >
