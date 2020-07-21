@@ -42,10 +42,6 @@ public class ReplyService {
 		return replyDao.insert(replyVo);
 	}
 	
-	
-	
-	
-	
 	//	댓글게시판 게시물 삭제----------------------------------------------------------------
 	
 	public int delete(int no) {

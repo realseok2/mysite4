@@ -48,7 +48,14 @@ public class UserDao {
 		return sqlSession.update("user.updateUser", userVo);
 	}
 	
+//	id중복체크(ajax)------------------------------------------------------------------
 	
+	public UserVo selectUser(String id) {
+		System.out.println("UserDao.selectUser");
+		
+		UserVo userVo = sqlSession.selectOne("user.selectById", id);
+		return userVo;
+	}
 	
 	
 	

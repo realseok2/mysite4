@@ -16,6 +16,12 @@ public class GuestbookVo {
 
 	}
 
+	public GuestbookVo(String name, String password, String content) {
+		this.name = name;
+		this.password = password;
+		this.content = content;
+	}
+	
 	public GuestbookVo(String name, String password, String content, String date) {
 		this.name = name;
 		this.password = password;

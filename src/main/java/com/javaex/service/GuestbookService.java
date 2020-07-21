@@ -40,8 +40,21 @@ public class GuestbookService {
 		return guestbookDao.delete(guestbookVo);
 	}
 	
-//	방명록 수정-----------------------------------------------------
+//	방명록 글 저장(ajax)-----------------------------------------------------
 	
+	public GuestbookVo addGuest(GuestbookVo guestbookVo) {
+		System.out.println("guestbookService:addGuest");
+		
+		//저장
+		guestbookDao.insertSelectKey(guestbookVo);
+		
+		int no = guestbookVo.getNo();		//	연구해 볼 것. return으로 받지 않고
+		System.out.println("selectKey로 받은 no값 = " + no);
+		
+		//저장한 데이터 가져오기
+		return guestbookDao.selectByNo(no);
+		
+	}
 	
 	
 	

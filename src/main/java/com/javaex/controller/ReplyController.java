@@ -66,21 +66,6 @@ public class ReplyController {
 		return "redirect:/reply/list";
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	//	댓글게시판 게시물 삭제-----------------------------------------------------------
 	
 	@RequestMapping("/delete/{no}")

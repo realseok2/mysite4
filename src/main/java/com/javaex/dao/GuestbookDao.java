@@ -44,7 +44,20 @@ public class GuestbookDao {
 	
 	
 	
-//	방명록 수정-----------------------------------------------------
+//	방명록 글 저장(ajax)-----------------------------------------------------
+	
+	public void insertSelectKey(GuestbookVo guestbookVo) {
+		System.out.println("guestbookDao:insertSelectKey");
+		
+		System.out.println("전-----" + guestbookVo.toString());			//	no값 없음
+		sqlSession.insert("guestbook.insertSelectKey", guestbookVo);
+		System.out.println("후-----" + guestbookVo.toString());			//	no값 있음
+	}
+	
+	//글 자여오기(ajax로 자신이 등록한 글)
+	public GuestbookVo selectByNo(int no) {
+		return sqlSession.selectOne("guestbook.selectByNo", no);
+	}
 	
 	
 	

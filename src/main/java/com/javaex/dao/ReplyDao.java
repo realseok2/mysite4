@@ -49,7 +49,6 @@ public class ReplyDao {
 		
 	}
 	
-	
 	//	댓글게시판 게시물 삭제----------------------------------------------------------------
 	
 	public int delete(int no) {
@@ -71,10 +70,6 @@ public class ReplyDao {
 		List<ReplyVo> rList = sqlSession.selectList("reply.keyword", keyword);
 		return rList;
 	}
-	
-	
-	
-	
 	
 	//	댓글게시판 페이징-------------------------------------------------------------------
 }

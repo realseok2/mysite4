@@ -64,6 +64,36 @@ public class GuestbookController {
 	}
 		
 	// 방명록 수정-----------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	// ajax 방명록----------------------------------------------------------
+	
+	@RequestMapping("/ajaxList")
+	public String ajaxList() {
+		System.out.println("guestbookController:ajaxList");
+		
+		
+		
+		return "/guestbook/ajaxList";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	
 	

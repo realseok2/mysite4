@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -6,15 +7,18 @@
 <head>
 <meta charset="UTF-8">
 <title>AddList</title>
-<link href="${pageContext.request.contextPath }/assets/css/mysite.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/guestbook.css" rel="stylesheet"	type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/mysite.css"
+	rel="stylesheet" type="text/css">
+<link
+	href="${pageContext.request.contextPath }/assets/css/guestbook.css"
+	rel="stylesheet" type="text/css">
 
 </head>
 
 <body>
 	<div id="wrap">
 
-	<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
+		<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 
 		<!-- //header -->
 
@@ -22,18 +26,29 @@
 
 		<!-- //nav -->
 
-		<c:import url="/WEB-INF/views/include/asideUser.jsp"></c:import>
+		<c:import url="/WEB-INF/views/include/guestbookAside.jsp"></c:import>
 
 		<!-- //aside -->
 
 		<div id="content">
 
-		<c:import url="/WEB-INF/views/include/contentHead.jsp"></c:import>
+			<div id="content-head">
+				<h3>Normal</h3>
+				<div id="location">
+					<ul>
+						<li>Main</li>
+						<li>Guestbook</li>
+						<li class="last">Normal</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
 
 			<!-- //content-head -->
 
 			<div id="guestbook">
-				<form action="${pageContext.request.contextPath }/guestbook/add" method="get">
+				<form action="${pageContext.request.contextPath }/guestbook/add"
+					method="get">
 					<table id="guestAdd">
 						<colgroup>
 							<col style="width: 70px;">
@@ -64,25 +79,29 @@
 
 				<c:forEach items="${gList}" var="guestbookVo">
 
-				<table class="guestRead">
-					<colgroup>
-						<col style="width: 10%;">
-						<col style="width: 35%;">
-						<col style="width: 35%;">
-						<col style="width: 10%;">
-						<col style="width: 10%;">
-					</colgroup>
-					<tr>
-						<td>${guestbookVo.no }</td>
-						<td>${guestbookVo.name }</td>
-						<td>${guestbookVo.date }</td>
-						<td><a href="${pageContext.request.contextPath }/guestbook/updateForm/${guestbookVo.no }">[ Update ]</a></td>
-						<td><a href="${pageContext.request.contextPath }/guestbook/deleteForm/${guestbookVo.no }">[ Delete ]</a></td>
-					</tr>
-					<tr>
-						<td colspan=5 class="text-left">${guestbookVo.content }</td>
-					</tr>
-				</table>
+					<table class="guestRead">
+						<colgroup>
+							<col style="width: 10%;">
+							<col style="width: 35%;">
+							<col style="width: 35%;">
+							<col style="width: 10%;">
+							<col style="width: 10%;">
+						</colgroup>
+						<tr>
+							<td>${guestbookVo.no }</td>
+							<td>${guestbookVo.name }</td>
+							<td>${guestbookVo.date }</td>
+							<td><a
+								href="${pageContext.request.contextPath }/guestbook/updateForm/${guestbookVo.no }">[
+									Update ]</a></td>
+							<td><a
+								href="${pageContext.request.contextPath }/guestbook/deleteForm/${guestbookVo.no }">[
+									Delete ]</a></td>
+						</tr>
+						<tr>
+							<td colspan=5 class="text-left">${guestbookVo.content }</td>
+						</tr>
+					</table>
 
 				</c:forEach>
 				<!-- //guestRead -->

@@ -1,6 +1,7 @@
 package com.javaex.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,20 @@ public class BoardController {
 		return "board/list";
 	}
 
+	// 게시판 페이징 리스트----------------------------------------------------------------
+
+	@RequestMapping("/list2")
+	public String list2(@RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage, Model model) {
+		System.out.println("boardController:list2");
+		System.out.println(crtPage);
+
+		Map<String, Object> pMap = boardService.getList2(crtPage);
+		model.addAttribute("pMap", pMap);
+		System.out.println(pMap.toString());
+
+		return "board/list";
+	}
+	
 	// 게시물 읽기-----------------------------------------------------------------
 
 	@RequestMapping("/read/{no}")
@@ -108,22 +123,6 @@ public class BoardController {
 		System.out.println("컨트롤러 : " + bList.toString());
 		return "board/list";
 	}
-	
-	// 게시물 페이징----------------------------------------------------------------
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
