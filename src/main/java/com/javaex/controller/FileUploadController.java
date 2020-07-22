@@ -12,59 +12,27 @@ import com.javaex.service.FileUploadService;
 @Controller
 @RequestMapping("/fileupload")
 public class FileUploadController {
-	
+
 	@Autowired
 	private FileUploadService fileUploadService;
-	
+
 	@RequestMapping("/form")
 	public String form() {
 		System.out.println("FileUploadController:form");
-	
+
 		return "fileupload/form";
-	
+
 	}
-	
+
 	@RequestMapping("/upload")
 	public String upload(@RequestParam("file") MultipartFile file, Model model) {
 		System.out.println("FileUploadController:upload");
 		System.out.println(file.getOriginalFilename());
-		
+
 		String saveName = fileUploadService.restore(file);
 		model.addAttribute("saveName", saveName);
-		
+
 		return "fileupload/result";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
